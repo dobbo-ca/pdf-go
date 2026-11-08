@@ -1,3 +1,4 @@
+# pergamon-go: hosted runners only
 on: [push, pull_request]
 name: Test
 
