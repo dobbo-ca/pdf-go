@@ -4,13 +4,20 @@ This is a minimal fork of [pdfcpu](https://github.com/pdfcpu/pdfcpu), kept by do
 kleio and byblos. It exists to carry resource-limit patches that pdfcpu does not
 have yet, so a hostile PDF cannot exhaust memory during a parse. Every patch is offered upstream as a pull request,
 and this fork is dropped once a pdfcpu release carries the fixes. The module path is unchanged and the Apache-2.0
-LICENSE and NOTICE are upstream's.
+LICENSE is upstream's (upstream has no NOTICE file).
 
 Consumers use it with a `replace` directive:
 
 ```
 replace github.com/pdfcpu/pdfcpu => github.com/dobbo-ca/pergamon-go <tag>
 ```
+
+The patches add two per-parse limits to `model.Configuration.Limits`. Zero keeps pdfcpu's behaviour, and both fail with an
+error that satisfies `errors.Is(err, model.ErrLimitExceeded)`:
+
+- `MaxObjectStreamTotalCount`: object stream entries (`/N`) summed over all object streams of one parse.
+- `MaxTotalDecodeBytes`: decoded bytes retained over one parse. One budget covers content, xref, font and metadata
+  streams, object streams and images. Zero keeps the default allowance derived from `MaxDecodeBytes`.
 
 The upstream README follows.
 
