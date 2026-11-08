@@ -1,7 +1,7 @@
 # pergamon-go: a minimal fork of pdfcpu
 
 This is a minimal fork of [pdfcpu](https://github.com/pdfcpu/pdfcpu), kept by dobbo-ca for
-[kleio](https://github.com/dobbo-ca) and byblos. It exists to carry resource-limit patches that pdfcpu does not
+kleio and byblos. It exists to carry resource-limit patches that pdfcpu does not
 have yet, so a hostile PDF cannot exhaust memory during a parse. Every patch is offered upstream as a pull request,
 and this fork is dropped once a pdfcpu release carries the fixes. The module path is unchanged and the Apache-2.0
 LICENSE and NOTICE are upstream's.
