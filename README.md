@@ -12,11 +12,11 @@ Consumers use it with a `replace` directive:
 replace github.com/pdfcpu/pdfcpu => github.com/dobbo-ca/pergamon-go <tag>
 ```
 
-The patches add two per-parse limits to `model.Configuration.Limits`. Zero keeps pdfcpu's behaviour (no entry cap, and for decoded bytes the separate defaults below), and both fail with an
-error that satisfies `errors.Is(err, model.ErrLimitExceeded)`:
+The patches add two per-parse limits to `model.Configuration.Limits`. Zero keeps pdfcpu's behaviour (no entry cap, and for decoded bytes the separate defaults below). When a limit is hit the
+error satisfies `errors.Is(err, model.ErrLimitExceeded)`; for the decode budgets that wrap is the only change to the error at zero:
 
 - `MaxObjectStreamTotalCount`: object stream entries (`/N`) summed over all object streams of one parse.
-- `MaxTotalDecodeBytes`: decoded bytes charged over one parse. When set, one budget covers content, xref, font and metadata
+- `MaxTotalDecodeBytes`: decoded bytes charged over one parse, counted as buffer capacity like pdfcpu's own budgets. When set, one budget covers content, xref, font and metadata
   streams, object streams and images, and decoding a stream again charges it again. Zero keeps pdfcpu's behaviour:
   `DecodeStream` calls and object streams each have their own default allowance derived from `MaxDecodeBytes`, and images have none.
 
