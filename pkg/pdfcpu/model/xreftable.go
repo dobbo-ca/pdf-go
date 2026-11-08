@@ -35,7 +35,6 @@ import (
 	"time"
 
 	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/internal/streamlimit"
 	"github.com/pdfcpu/pdfcpu/pkg/filter"
 	"github.com/pdfcpu/pdfcpu/pkg/font"
 	"github.com/pdfcpu/pdfcpu/pkg/log"
@@ -115,7 +114,9 @@ type Annot struct {
 }
 
 type decodedStreamBudget struct {
-	used int64
+	used    int64
+	objStm  int64 // object stream bytes, counted apart from used unless MaxTotalDecodeBytes is set
+	entries int   // object stream entries declared so far
 }
 
 // PgAnnots represents a map of page annotations by type.
@@ -2173,20 +2174,66 @@ func (xRefTable *XRefTable) checkInheritedPageAttrs(pageDict types.Dict, pAttrs 
 }
 
 func decodedStreamBufferLimit(conf *Configuration) int64 {
-	return streamlimit.DecodeAllowance(conf.DecodeLimit())
+	return conf.TotalDecodeLimit()
+}
+
+// ChargeObjectStreamEntries adds the n entries of another object stream to the parse total
+// and fails with ErrLimitExceeded once MaxObjectStreamTotalCount is passed.
+func (xRefTable *XRefTable) ChargeObjectStreamEntries(n int) error {
+	max := xRefTable.Conf.Limits.MaxObjectStreamTotalCount
+	xRefTable.decodedStreamBudget.entries += n
+	if max > 0 && xRefTable.decodedStreamBudget.entries > max {
+		return fmt.Errorf("%w: object stream entries %d exceed MaxObjectStreamTotalCount %d",
+			ErrLimitExceeded, xRefTable.decodedStreamBudget.entries, max)
+	}
+	return nil
 }
 
 func decodedContentAliasesRaw(sd *types.StreamDict) bool {
 	return len(sd.Content) > 0 && len(sd.Raw) > 0 && &sd.Content[0] == &sd.Raw[0]
 }
 
-func decodeBufferBudgetError(limit int64) error {
-	return fmt.Errorf("stream decoding exceeded %d-byte cumulative budget: %w", limit, filter.ErrDecodeLimitExceeded)
+// compactContent drops the spare capacity of a decoded object stream buffer, as pdfcpu's object stream budget did.
+func compactContent(sd *types.StreamDict) {
+	if len(sd.Content) < cap(sd.Content) {
+		sd.Content = append(make([]byte, 0, len(sd.Content)), sd.Content...)
+	}
+}
+
+func decodeBufferBudgetError(limit int64, objStm bool) error {
+	what := "stream"
+	if objStm {
+		what = "object stream"
+	}
+	return fmt.Errorf("%s decoding exceeded %d-byte cumulative budget: %w: %w",
+		what, limit, filter.ErrDecodeLimitExceeded, ErrLimitExceeded)
 }
 
 // DecodeStream decodes sd using the configured per-stream and cumulative decoded-byte limits.
 // A nil table or missing configuration selects the default per-stream limit without cumulative accounting.
 func (xRefTable *XRefTable) DecodeStream(sd *types.StreamDict) error {
+	return xRefTable.decodeStream(sd, false)
+}
+
+// DecodeObjectStream is DecodeStream for object streams. Without MaxTotalDecodeBytes they keep their own
+// default allowance, apart from the one of DecodeStream.
+func (xRefTable *XRefTable) DecodeObjectStream(sd *types.StreamDict) error {
+	return xRefTable.decodeStream(sd, true)
+}
+
+// DecodeImageStream is DecodeStream for images. Without MaxTotalDecodeBytes images have no cumulative cap.
+func (xRefTable *XRefTable) DecodeImageStream(sd *types.StreamDict) error {
+	if xRefTable == nil || xRefTable.Conf == nil || xRefTable.Conf.Limits.MaxTotalDecodeBytes <= 0 {
+		var conf *Configuration
+		if xRefTable != nil {
+			conf = xRefTable.Conf
+		}
+		return sd.DecodeWithLimit(conf.DecodeLimit())
+	}
+	return xRefTable.decodeStream(sd, false)
+}
+
+func (xRefTable *XRefTable) decodeStream(sd *types.StreamDict, objStm bool) error {
 	var conf *Configuration
 	if xRefTable != nil {
 		conf = xRefTable.Conf
@@ -2201,7 +2248,11 @@ func (xRefTable *XRefTable) DecodeStream(sd *types.StreamDict) error {
 		return sd.DecodeWithLimit(decodeLimit)
 	}
 
-	remaining := bufferLimit - xRefTable.decodedStreamBudget.used
+	used := &xRefTable.decodedStreamBudget.used
+	if objStm && conf.Limits.MaxTotalDecodeBytes <= 0 {
+		used = &xRefTable.decodedStreamBudget.objStm
+	}
+	remaining := bufferLimit - *used
 	aggregateLimited := decodeLimit < 0 || remaining < decodeLimit
 	if aggregateLimited {
 		// DecodeWithLimit treats zero as the default limit, so use one byte when the budget is exhausted.
@@ -2210,20 +2261,23 @@ func (xRefTable *XRefTable) DecodeStream(sd *types.StreamDict) error {
 
 	if err := sd.DecodeWithLimit(decodeLimit); err != nil {
 		if aggregateLimited && errors.Is(err, filter.ErrDecodeLimitExceeded) {
-			return decodeBufferBudgetError(bufferLimit)
+			return decodeBufferBudgetError(bufferLimit, objStm)
 		}
 		return err
 	}
 	if decodedContentAliasesRaw(sd) || cap(sd.Content) == 0 {
 		return nil
 	}
+	if objStm {
+		compactContent(sd)
+	}
 
 	n := int64(cap(sd.Content))
 	if n > remaining {
 		sd.Content = nil
-		return decodeBufferBudgetError(bufferLimit)
+		return decodeBufferBudgetError(bufferLimit, objStm)
 	}
-	xRefTable.decodedStreamBudget.used += n
+	*used += n
 	return nil
 }
 

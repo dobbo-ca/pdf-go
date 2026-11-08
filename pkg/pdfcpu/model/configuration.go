@@ -28,6 +28,7 @@ import (
 	"time"
 
 	"github.com/pdfcpu/pdfcpu/internal/fileutil"
+	"github.com/pdfcpu/pdfcpu/internal/streamlimit"
 	"github.com/pdfcpu/pdfcpu/pkg/filter"
 	"github.com/pdfcpu/pdfcpu/pkg/font"
 	"github.com/pdfcpu/pdfcpu/pkg/log"
@@ -501,9 +502,15 @@ type ResourceLimits struct {
 	MaxStreamBytes int64
 
 	// MaxDecodeBytes limits each decoded stream and combined page content. XRefTable.DecodeStream calls and object
-	// streams each share separate cumulative limits of at least 1 GiB or twice this value. Zero selects the default;
+	// streams each have a separate cumulative limit of at least 1 GiB or twice this value; images have none,
+	// unless MaxTotalDecodeBytes is set. Zero selects the default;
 	// negative disables these decode limits.
 	MaxDecodeBytes int64
+
+	// MaxTotalDecodeBytes limits the decoded bytes charged over one parse, one budget shared by XRefTable.DecodeStream
+	// calls, object streams and images. Decoding the same stream again charges it again. Zero keeps the separate
+	// default limits described at MaxDecodeBytes.
+	MaxTotalDecodeBytes int64
 
 	// MaxImagePixels limits decoded/rendered image dimensions.
 	MaxImagePixels int64
@@ -516,6 +523,10 @@ type ResourceLimits struct {
 
 	// MaxObjectStreamCount limits object stream /N.
 	MaxObjectStreamCount int
+
+	// MaxObjectStreamTotalCount limits the object stream entries (/N) summed over all object streams of one parse.
+	// Zero disables the limit.
+	MaxObjectStreamTotalCount int
 
 	// MaxObjectStreamFirst limits object stream /First prolog bytes.
 	MaxObjectStreamFirst int64
@@ -534,6 +545,17 @@ func (c *Configuration) DecodeLimit() int64 {
 		return filter.DefaultMaxDecodeBytes
 	}
 	return c.Limits.MaxDecodeBytes
+}
+
+// ErrLimitExceeded is wrapped by errors for the cumulative limits of ResourceLimits.
+var ErrLimitExceeded = errors.New("resource limit exceeded")
+
+// TotalDecodeLimit returns the cumulative decoded-byte allowance; negative disables it.
+func (c *Configuration) TotalDecodeLimit() int64 {
+	if c != nil && c.Limits.MaxTotalDecodeBytes > 0 {
+		return c.Limits.MaxTotalDecodeBytes
+	}
+	return streamlimit.DecodeAllowance(c.DecodeLimit())
 }
 
 // DefaultResourceLimits returns the default resource limits.
