@@ -167,7 +167,6 @@ It focuses on correctness, robustness and independence from external dependencie
 
 * Project documentation: https://pdfcpu.io
 * Changelog: https://pdfcpu.io/changelog
-* [Contributing guidelines](CONTRIBUTING.md)
 * [Security policy](SECURITY.md)
 
 ### CLI
@@ -187,8 +186,7 @@ It focuses on correctness, robustness and independence from external dependencie
 
 ## Contributing
 
-Contributions are welcome. See the [contributing guidelines](CONTRIBUTING.md) and the
-[complete list of contributors](https://github.com/pdfcpu/pdfcpu/graphs/contributors).
+Contributions are welcome.
 
 ### Reporting PDF issues
 
@@ -219,12 +217,6 @@ See the [security policy](SECURITY.md) for private reporting instructions.
 
 ---
 
-## Code of Conduct
-
-This project is released with a Contributor [Code of Conduct](CODE_OF_CONDUCT.md).
-By participating, you agree to abide by its terms.
-
----
 ## Disclaimer
 
 Use of pdfcpu assumes compliance with all applicable copyrights for any processed PDF content, including embedded resources such as fonts and images.
