@@ -28,7 +28,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
 )
 
 // TestIsCorruptFlateInput verifies the corresponding behavior.

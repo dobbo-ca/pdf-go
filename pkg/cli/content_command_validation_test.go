@@ -21,9 +21,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/fault"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/fault"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 type contentCommandExecutor func(context.Context, *Command) ([]string, error)

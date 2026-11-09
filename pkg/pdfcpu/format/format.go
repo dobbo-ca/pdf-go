@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // Text returns a string with resolved place holders for pageNr, pageCount, timestamp or pdfcpu version.

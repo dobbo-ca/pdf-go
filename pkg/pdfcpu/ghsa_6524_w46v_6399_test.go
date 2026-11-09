@@ -17,7 +17,7 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-6524-w46v-6399: grayscale and Indexed image rendering must reject bad sample depths and palettes, not panic.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-6524-w46v-6399
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-6524-w46v-6399
 
 import (
 	"bytes"
@@ -26,8 +26,8 @@ import (
 	"image/png"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TestGHSA_6524_w46v_6399_RenderDeviceGray16BPC verifies that a valid 16-bit grayscale image renders without a panic.

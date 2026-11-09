@@ -28,8 +28,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
 )
 
 // TestPropertyCommandConstructorsCloneCallerData verifies commands own their mutable inputs.

@@ -17,7 +17,7 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-g5q6-53hx-f68j prevents attacker-controlled poster page dimensions from creating unbounded tile grids.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-g5q6-53hx-f68j
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-g5q6-53hx-f68j
 
 import (
 	"context"
@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func TestGHSA_g5q6_53hx_f68j_PosterTileLimit(t *testing.T) {

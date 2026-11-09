@@ -23,8 +23,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func attachmentErrorContext() *Context {

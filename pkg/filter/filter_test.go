@@ -25,7 +25,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
 )
 
 func zlibEncoded(t *testing.T, s string) *bytes.Buffer {

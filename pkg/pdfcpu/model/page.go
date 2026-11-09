@@ -20,9 +20,9 @@ import (
 	"bytes"
 	"strconv"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/color"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/draw"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/color"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/draw"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // Resource identifies an indirect PDF resource object.

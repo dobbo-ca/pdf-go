@@ -17,7 +17,7 @@ limitations under the License.
 package model
 
 // GHSA-pr6x-vqwr-4hj2: deferred decoding must share a cumulative decoded-buffer budget across aliased streams.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-pr6x-vqwr-4hj2
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-pr6x-vqwr-4hj2
 
 import (
 	"bytes"
@@ -26,8 +26,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func TestGHSA_pr6x_vqwr_4hj2_CumulativeBudgetCoversDeferredAliases(t *testing.T) {

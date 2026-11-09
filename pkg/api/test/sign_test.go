@@ -21,7 +21,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
 )
 
 func logResults(ss []string) {

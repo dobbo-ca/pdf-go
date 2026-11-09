@@ -23,7 +23,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
 )
 
 type failingDecodedContentReader struct {

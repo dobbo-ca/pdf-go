@@ -20,7 +20,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
 )
 
 const nameTreeMaxKids = 4

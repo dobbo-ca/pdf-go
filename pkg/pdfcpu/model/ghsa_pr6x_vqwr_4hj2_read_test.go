@@ -18,7 +18,7 @@ package model_test
 
 // GHSA-pr6x-vqwr-4hj2: streams decoded while reading must be charged to the document's decoded-stream budget, each
 // aliased xref entry separately, except where the decoded content is the raw stream data.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-pr6x-vqwr-4hj2
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-pr6x-vqwr-4hj2
 
 import (
 	"bytes"
@@ -26,10 +26,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // ghsaPr6xStreamPDF writes a one-page document whose objects 4.. all refer to one stream object with the given filters.

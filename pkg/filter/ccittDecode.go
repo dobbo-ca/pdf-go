@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
 	"golang.org/x/image/ccitt"
 )
 

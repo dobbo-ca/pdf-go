@@ -24,7 +24,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/pdfcpu/pdfcpu/internal/fileutil"
+	"github.com/dobbo-ca/pdf-go/internal/fileutil"
 )
 
 const bundledDefaultCertificates = true

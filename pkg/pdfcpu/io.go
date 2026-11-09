@@ -26,8 +26,8 @@ import (
 	"path/filepath"
 	"reflect"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/internal/fileutil"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/internal/fileutil"
 )
 
 type namedWriteCloser interface {

@@ -17,7 +17,7 @@ limitations under the License.
 package api
 
 // GHSA-prvw-v9vv-6966: image extraction must return an error for a missing BitsPerComponent instead of panicking.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-prvw-v9vv-6966
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-prvw-v9vv-6966
 
 import (
 	"bytes"
@@ -25,7 +25,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func ghsaPrvwImageWithoutBitsPerComponentPDF() []byte {

@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // TestReadAliasedXRefEntriesHaveBudget checks that repeated parsing of one object exhausts the read budget.

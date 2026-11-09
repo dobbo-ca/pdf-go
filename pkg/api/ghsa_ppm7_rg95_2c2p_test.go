@@ -17,7 +17,7 @@ limitations under the License.
 package api
 
 // GHSA-ppm7-rg95-2c2p: encryption must encrypt strings of compressed objects instead of copying them in plaintext.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-ppm7-rg95-2c2p
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-ppm7-rg95-2c2p
 
 import (
 	"bytes"
@@ -26,7 +26,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 const ghsaPpm7Marker = "ghsa-ppm7-plaintext-marker"

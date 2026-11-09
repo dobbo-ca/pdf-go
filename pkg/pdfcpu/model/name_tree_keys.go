@@ -19,8 +19,8 @@ package model
 import (
 	"context"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func (e entry) key() string {

@@ -18,7 +18,7 @@ package create
 
 // GHSA-cphg-88q6-whwh: table rows and columns in a create template must be bounded across the document before create
 // allocates or renders per row or column, and a table with an invalid anchor must not skip that validation.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-cphg-88q6-whwh
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-cphg-88q6-whwh
 
 import (
 	"fmt"

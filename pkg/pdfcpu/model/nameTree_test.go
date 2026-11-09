@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func removalTreeObject(t *testing.T, x *XRefTable, obj types.Object) types.IndirectRef {

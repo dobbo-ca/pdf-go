@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // dupStreamPDF is a classic-xref PDF with k xref entries pointing at one unreferenced p-byte stream.

@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/cli"
+	"github.com/dobbo-ca/pdf-go/pkg/cli"
 )
 
 // TestMergeCreateCommand all PDFs in testdir into out/test.pdf.

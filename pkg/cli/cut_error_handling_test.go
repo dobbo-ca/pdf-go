@@ -20,7 +20,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
 )
 
 type cutCLIExec = dispatchFunc

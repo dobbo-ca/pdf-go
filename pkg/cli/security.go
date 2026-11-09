@@ -16,7 +16,7 @@ limitations under the License.
 
 package cli
 
-import "github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+import "github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 
 // EncryptCommand creates a new command to encrypt a file.
 func EncryptCommand(inFile, outFile string, conf *model.Configuration) *Command {

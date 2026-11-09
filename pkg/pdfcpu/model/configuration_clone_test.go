@@ -21,7 +21,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func containsMutableReferences(t reflect.Type) bool {

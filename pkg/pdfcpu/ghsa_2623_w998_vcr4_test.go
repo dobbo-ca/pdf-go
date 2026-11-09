@@ -19,7 +19,7 @@ package pdfcpu
 // GHSA-2623-w998-vcr4: annotation deletion, page migration and the repair of references to free objects during
 // optimization must not recurse once per object of a reference chain, because a long chain overflows the goroutine
 // stack and kills the process.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-2623-w998-vcr4
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-2623-w998-vcr4
 
 import (
 	"bytes"
@@ -33,8 +33,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 const ghsa2623Links = 20000

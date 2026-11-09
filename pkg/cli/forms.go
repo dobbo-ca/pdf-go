@@ -16,7 +16,7 @@ limitations under the License.
 
 package cli
 
-import "github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+import "github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 
 func listFormFieldsCommand(inFiles []string, json bool, conf *model.Configuration) *Command {
 	if conf == nil {

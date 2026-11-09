@@ -19,8 +19,8 @@ package validate
 import (
 	"fmt"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func validateRemoteDestinationArray(xRefTable *model.XRefTable, a types.Array, ownerObjNr int) (err error) {

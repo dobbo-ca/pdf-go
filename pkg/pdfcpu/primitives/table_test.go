@@ -19,7 +19,7 @@ package primitives
 import (
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func TestTableCellLowerLeft(t *testing.T) {

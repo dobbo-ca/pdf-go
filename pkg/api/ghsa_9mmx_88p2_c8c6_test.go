@@ -17,7 +17,7 @@ limitations under the License.
 package api
 
 // GHSA-9mmx-88p2-c8c6: packed DeviceRGB and CalRGB samples must not be read past the end of the image data.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-9mmx-88p2-c8c6
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-9mmx-88p2-c8c6
 
 import (
 	"bytes"
@@ -26,7 +26,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func ghsa9mmxRGBImagePDF(colorSpace string, bpc int) []byte {
