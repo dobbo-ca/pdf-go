@@ -229,4 +229,3 @@ Apache License 2.0
 
 ---
 
-<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=592f747a-ac99-42e3-802a-80dbf2b94519" width="1" height="1" />
