@@ -17,7 +17,7 @@ limitations under the License.
 package model
 
 // GHSA-8pv5-h3hv-xhc9: shared acyclic reference graphs must not make object comparison take exponential time.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-8pv5-h3hv-xhc9
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-8pv5-h3hv-xhc9
 
 import (
 	"bytes"
@@ -28,8 +28,8 @@ import (
 	"testing"
 	"time"
 
-	pdfcpuLog "github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	pdfcpuLog "github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func ghsa8pv5SharedChains(depth int, unequal bool) (*XRefTable, types.IndirectRef, types.IndirectRef) {

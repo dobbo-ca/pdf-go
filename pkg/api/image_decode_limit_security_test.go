@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func flateImageData(t *testing.T, data []byte) []byte {

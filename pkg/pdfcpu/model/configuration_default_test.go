@@ -26,8 +26,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/font"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/fault"
+	"github.com/dobbo-ca/pdf-go/pkg/font"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/fault"
 )
 
 func isolatedDefaultConfigurationRoot(t *testing.T) string {

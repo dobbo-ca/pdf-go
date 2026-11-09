@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // TestLoadCertificatesReloadsBundledEUTL verifies embedded initialization replaces an empty cached pool.

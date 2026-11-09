@@ -22,8 +22,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 var (

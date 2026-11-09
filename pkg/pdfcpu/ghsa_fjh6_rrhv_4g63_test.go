@@ -17,14 +17,14 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-fjh6-rrhv-4g63: traditional xref tables must enforce the configured MaxObjectCount and MaxXRefEntries limits.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-fjh6-rrhv-4g63
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-fjh6-rrhv-4g63
 
 import (
 	"bufio"
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func TestGHSA_fjh6_rrhv_4g63_ParseXRefTableSubSectionRejectsLimits(t *testing.T) {

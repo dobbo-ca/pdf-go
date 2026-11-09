@@ -18,7 +18,7 @@ package form
 
 // GHSA-gx4m-7r76-vpww: a page number in form fill data must be checked against the page count before any
 // per-page allocation, so a few bytes of JSON cannot select gigabytes of memory.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-gx4m-7r76-vpww
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-gx4m-7r76-vpww
 
 import (
 	"bytes"
@@ -27,8 +27,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func ghsaGx4mOnePageContext(t *testing.T) *model.Context {

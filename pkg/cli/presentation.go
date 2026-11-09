@@ -17,8 +17,8 @@ limitations under the License.
 package cli
 
 import (
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func commandWritesPDFToStdout(cmd *Command) bool {

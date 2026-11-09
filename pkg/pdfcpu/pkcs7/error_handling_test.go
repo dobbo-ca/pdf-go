@@ -24,10 +24,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/pkcs7"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/sign"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/pkcs7"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/sign"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TestParserFailureRemainsError locks the package boundary: malformed PKCS#7

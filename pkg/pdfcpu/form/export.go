@@ -27,10 +27,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/primitives"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/primitives"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 const (

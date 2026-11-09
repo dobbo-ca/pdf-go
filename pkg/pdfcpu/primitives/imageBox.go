@@ -28,15 +28,15 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/color"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/draw"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/matrix"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/color"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/draw"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/matrix"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
-var imageBoxUserAgent = "pdfcpu/" + model.VersionStr + " (+https://github.com/pdfcpu/pdfcpu)"
+var imageBoxUserAgent = "pdfcpu/" + model.VersionStr + " (+https://github.com/dobbo-ca/pdf-go)"
 
 // ImageData represents a more direct way for providing image data for form filling scenarios.
 type ImageData struct {

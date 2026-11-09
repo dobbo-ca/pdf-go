@@ -19,7 +19,7 @@ limitations under the License.
 package primitives
 
 // GHSA-44h9-p34h-2w4p: reject FIFOs before a blocking image open.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-44h9-p34h-2w4p
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-44h9-p34h-2w4p
 
 import (
 	"errors"
@@ -29,7 +29,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 func TestGHSA_44h9_p34h_2w4p_FIFO(t *testing.T) {

@@ -19,7 +19,7 @@ package api
 // GHSA-p2r6-9jcq-fp7v: splitting along bookmarks must check a bookmark's page span against the page count before
 // listing its pages. Otherwise an outline destination with a huge page number makes split allocate one slice entry per
 // page number, or panic.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-p2r6-9jcq-fp7v
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-p2r6-9jcq-fp7v
 
 import (
 	"bytes"
@@ -31,8 +31,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 const ghsaP2r6AllocLimit = 8 << 20

@@ -20,7 +20,7 @@ package pdfcpu
 // input must not size the buffer, object-stream indexes must not be shared, and lazy object-stream decodes must use a
 // separate cumulative budget from the XRefTable budget. Otherwise shared or nested streams can make a small file hold
 // many independent buffers. Other decoded buffers are covered in package model.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-pr6x-vqwr-4hj2
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-pr6x-vqwr-4hj2
 
 import (
 	"bytes"
@@ -34,9 +34,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 const (

@@ -17,7 +17,7 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-w2hj-54mc-76r4: overflowing xref stream /W widths must return an error instead of panicking.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-w2hj-54mc-76r4
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-w2hj-54mc-76r4
 
 import (
 	"bytes"
@@ -25,8 +25,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func TestGHSA_w2hj_54mc_76r4_XRefStreamEntryLenRejectsOverflow(t *testing.T) {

@@ -17,7 +17,7 @@ limitations under the License.
 package model
 
 // GHSA-g766-88fx-58h8: image buffer sizes must use checked multiplication and respect the configured image limits.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-g766-88fx-58h8
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-g766-88fx-58h8
 
 import (
 	"bytes"

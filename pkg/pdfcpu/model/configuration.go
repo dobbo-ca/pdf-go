@@ -27,13 +27,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/internal/fileutil"
-	"github.com/pdfcpu/pdfcpu/internal/streamlimit"
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/font"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/fault"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/internal/fileutil"
+	"github.com/dobbo-ca/pdf-go/internal/streamlimit"
+	"github.com/dobbo-ca/pdf-go/pkg/filter"
+	"github.com/dobbo-ca/pdf-go/pkg/font"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/fault"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 const (

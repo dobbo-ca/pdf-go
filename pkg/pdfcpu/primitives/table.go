@@ -22,12 +22,12 @@ import (
 	"math"
 	"strings"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/color"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/draw"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/format"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/matrix"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/color"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/draw"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/format"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/matrix"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TableHeader defines table header values and their layout.

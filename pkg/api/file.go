@@ -24,9 +24,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/internal/fileutil"
-	"github.com/pdfcpu/pdfcpu/internal/inputlimit"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/internal/fileutil"
+	"github.com/dobbo-ca/pdf-go/internal/inputlimit"
 )
 
 type contextReader struct {

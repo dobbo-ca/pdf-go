@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // scalarPDF is a classic-xref PDF whose catalog references object 5, whose body is the hostile scalar.

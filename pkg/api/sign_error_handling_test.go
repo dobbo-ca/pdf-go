@@ -29,10 +29,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/fault"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/pkcs7"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/fault"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/pkcs7"
 )
 
 type signErrorWriter struct {

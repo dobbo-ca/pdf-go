@@ -20,9 +20,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/cli"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/cli"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func testImportImages(t *testing.T, msg string, imgFiles []string, outFile, impConf string) {

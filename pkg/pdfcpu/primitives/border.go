@@ -20,8 +20,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/color"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/color"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // Border defines the width, color, and line-join style of an element border.

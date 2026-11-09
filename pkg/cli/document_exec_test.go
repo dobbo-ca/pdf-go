@@ -29,9 +29,9 @@ import (
 	"strings"
 	"testing"
 
-	pdfcpuLog "github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	pdfcpuLog "github.com/dobbo-ca/pdf-go/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 type validationErrorWriter struct {

@@ -18,7 +18,7 @@ package create
 
 // GHSA-gx4m-7r76-vpww: a page number in a create template must be bounded before blank pages are allocated and
 // rendered, so a few bytes of JSON cannot select gigabytes of memory.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-gx4m-7r76-vpww
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-gx4m-7r76-vpww
 
 import (
 	"fmt"

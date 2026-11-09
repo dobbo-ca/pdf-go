@@ -29,7 +29,7 @@ import (
 	"testing"
 
 	"github.com/google/jsonschema-go/jsonschema"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 	"go.yaml.in/yaml/v3"
 )
 

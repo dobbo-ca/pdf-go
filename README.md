@@ -1,16 +1,11 @@
-# pergamon-go: a minimal fork of pdfcpu
+# pdf-go
 
-This is a minimal fork of [pdfcpu](https://github.com/pdfcpu/pdfcpu), kept by dobbo-ca for
-kleio and byblos. It exists to carry resource-limit patches that pdfcpu does not
-have yet, so a hostile PDF cannot exhaust memory during a parse. Every patch is offered upstream as a pull request,
-and this fork is dropped once a pdfcpu release carries the fixes. The module path is unchanged and the Apache-2.0
-LICENSE is upstream's (upstream has no NOTICE file).
+pdf-go is a dobbo-ca-owned hard fork of [pdfcpu](https://github.com/pdfcpu/pdfcpu), kept for
+kleio and byblos. It carries per-parse resource limits so a hostile PDF cannot exhaust memory during a parse.
+We pull upstream changes only when we want them, and nothing is sent upstream. Upstream's Apache-2.0
+LICENSE is kept (upstream has no NOTICE file).
 
-Consumers use it with a `replace` directive:
-
-```
-replace github.com/pdfcpu/pdfcpu => github.com/dobbo-ca/pergamon-go <tag>
-```
+Import `github.com/dobbo-ca/pdf-go` directly; no `replace` directive is needed.
 
 The patches add two per-parse limits to `model.Configuration.Limits`. Zero keeps pdfcpu's behaviour (no entry cap, and for decoded bytes the separate defaults below). When a limit is hit the
 error satisfies `errors.Is(err, model.ErrLimitExceeded)`; for the decode budgets that wrap is the only change to the error at zero:
@@ -21,17 +16,20 @@ error satisfies `errors.Is(err, model.ErrLimitExceeded)`; for the decode budgets
   streams, object streams and images, and decoding a stream again charges it again. Zero keeps pdfcpu's behaviour:
   `DecodeStream` calls and object streams each have their own default allowance derived from `MaxDecodeBytes`, and images have none.
 
+## Versions
+
+The first release under `github.com/dobbo-ca/pdf-go` is v0.17.0, not v0.1.0. This repo once held pdfcpu's
+v0.0.1-v0.16.4 tags, and proxy.golang.org resolved them under this module path (for example v0.1.1 and
+v0.16.4), so those version numbers may be cached and are never reused.
+
 The upstream README follows.
 
 ---
 
 # pdfcpu: PDF tooling for Go and the command line
 
-[![Test](https://github.com/pdfcpu/pdfcpu/workflows/Test/badge.svg)](https://github.com/pdfcpu/pdfcpu/actions)
-[![Coverage Status](https://coveralls.io/repos/github/pdfcpu/pdfcpu/badge.svg?branch=master)](https://coveralls.io/github/pdfcpu/pdfcpu?branch=master)
-[![Go Reference](https://pkg.go.dev/badge/github.com/pdfcpu/pdfcpu.svg)](https://pkg.go.dev/github.com/pdfcpu/pdfcpu)
+[![Go Reference](https://pkg.go.dev/badge/github.com/dobbo-ca/pdf-go.svg)](https://pkg.go.dev/github.com/dobbo-ca/pdf-go)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Sponsor](https://img.shields.io/badge/Sponsor-GitHub-%23fe8e86?logo=githubsponsors)](https://github.com/sponsors/hhrutter)
 
 <p align="left">
   <a href="https://pdfcpu.io"><img src="resources/logoSmall.png" width="150"></a>
@@ -52,9 +50,10 @@ improving.
 
 ## Installation
 
-| Command-line interface | Go API |
-| --- | --- |
-| **[CLI Installation instructions](https://pdfcpu.io/getting_started/install_cli/?src=github-readme)** | **[API Installation instructions](https://pdfcpu.io/getting_started/install_api/?src=github-readme)** |
+```
+go get github.com/dobbo-ca/pdf-go
+```
+
 
 ---
 
@@ -166,7 +165,6 @@ It focuses on correctness, robustness and independence from external dependencie
 ## Documentation
 
 * Project documentation: https://pdfcpu.io
-* Changelog: https://pdfcpu.io/changelog
 * [Security policy](SECURITY.md)
 
 ### CLI
@@ -175,12 +173,12 @@ It focuses on correctness, robustness and independence from external dependencie
 
 ### Go API
 
-* Package documentation: https://pkg.go.dev/github.com/pdfcpu/pdfcpu
-* API documentation: https://pkg.go.dev/github.com/pdfcpu/pdfcpu/pkg/api
+* Package documentation: https://pkg.go.dev/github.com/dobbo-ca/pdf-go
+* API documentation: https://pkg.go.dev/github.com/dobbo-ca/pdf-go/pkg/api
 * Examples:
 
-  * https://github.com/pdfcpu/pdfcpu/tree/master/pkg/api/test
-  * https://github.com/pdfcpu/pdfcpu/tree/master/pkg/samples
+  * https://github.com/dobbo-ca/pdf-go/tree/main/pkg/api/test
+  * https://github.com/dobbo-ca/pdf-go/tree/main/pkg/samples
 
 ---
 

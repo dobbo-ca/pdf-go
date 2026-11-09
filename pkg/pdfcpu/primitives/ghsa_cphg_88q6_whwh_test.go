@@ -18,14 +18,14 @@ package primitives
 
 // GHSA-cphg-88q6-whwh: the rows and columns of all tables in a create template share one bound, and positioning a cell
 // does not depend on its column, so a small template cannot make create render or allocate without limit.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-cphg-88q6-whwh
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-cphg-88q6-whwh
 
 import (
 	"math"
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func TestGHSA_cphg_88q6_whwh_TableLineBudget(t *testing.T) {

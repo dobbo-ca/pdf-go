@@ -25,7 +25,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/font"
+	"github.com/dobbo-ca/pdf-go/pkg/font"
 )
 
 func TestReadConfigurationFileDoesNotWriteOrCache(t *testing.T) {

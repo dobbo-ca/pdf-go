@@ -27,7 +27,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/internal/netutil"
+	"github.com/dobbo-ca/pdf-go/internal/netutil"
 )
 
 const (

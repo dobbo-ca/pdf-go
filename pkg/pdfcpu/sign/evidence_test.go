@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 // TestAssessmentScopeZeroValueIsLocal locks down backwards-compatible local

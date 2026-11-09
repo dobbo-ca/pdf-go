@@ -17,7 +17,7 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-gj7c-wpph-xx35: a stream /Filter or /DecodeParms referring to itself must fail instead of overflowing the stack.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-gj7c-wpph-xx35
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-gj7c-wpph-xx35
 
 import (
 	"bytes"
@@ -28,8 +28,8 @@ import (
 	"runtime/debug"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 func selfReferencingStreamPDF(entry string) []byte {

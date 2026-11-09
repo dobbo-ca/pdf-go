@@ -17,13 +17,13 @@ limitations under the License.
 package validate
 
 // GHSA-7v74-phpq-xq6g: signatures in the current revision must be reported as current, not historical.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-7v74-phpq-xq6g
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-7v74-phpq-xq6g
 
 import (
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TestGHSA_7v74_phpq_xq6g_CacheSignatureDictionaryRevision verifies field updates do not change the signature's

@@ -23,9 +23,9 @@ import (
 	stdlog "log"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/font"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/font"
+	"github.com/dobbo-ca/pdf-go/pkg/log"
 )
 
 func TestInstallFontsCommandRendersStructuredWarnings(t *testing.T) {

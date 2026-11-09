@@ -29,9 +29,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/pkcs7"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/pkcs7"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 type fullPKCS7ValidationFixture struct {

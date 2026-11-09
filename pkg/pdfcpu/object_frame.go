@@ -21,7 +21,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // maxErrorPathEntries limits the entries an error path names; a longer path keeps its first and last entries.

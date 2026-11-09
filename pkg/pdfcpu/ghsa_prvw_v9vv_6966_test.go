@@ -17,13 +17,13 @@ limitations under the License.
 package pdfcpu
 
 // GHSA-prvw-v9vv-6966: image masks may omit BitsPerComponent and must default to one bit per component.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-prvw-v9vv-6966
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-prvw-v9vv-6966
 
 import (
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TestGHSA_prvw_v9vv_6966_ImageMaskDefaultsBitsPerComponent verifies image masks use the implicit one-bit component

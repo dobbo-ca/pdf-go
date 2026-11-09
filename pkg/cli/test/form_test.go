@@ -23,8 +23,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/cli"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/form"
+	"github.com/dobbo-ca/pdf-go/pkg/cli"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/form"
 )
 
 func createSinglePageDemoForm(t *testing.T, fileName string) string {

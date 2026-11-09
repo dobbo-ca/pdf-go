@@ -18,7 +18,7 @@ package validate
 
 // GHSA-vwmc-mhq7-fqhc: an object shared by several parents in a resource, pattern, property list or visibility
 // expression graph must be validated once per depth, not once per path, so a few KB cannot cause 2^n work.
-// https://github.com/pdfcpu/pdfcpu/security/advisories/GHSA-vwmc-mhq7-fqhc
+// https://github.com/dobbo-ca/pdf-go/security/advisories/GHSA-vwmc-mhq7-fqhc
 
 import (
 	"bytes"
@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/model"
 )
 
 const ghsaVwmcEmptyStream = "<< /Length 0 >>\nstream\n\nendstream"

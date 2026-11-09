@@ -30,10 +30,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/pdfcpu/pdfcpu/internal/contextutil"
-	"github.com/pdfcpu/pdfcpu/internal/corefont/metrics"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/sanitize"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/internal/contextutil"
+	"github.com/dobbo-ca/pdf-go/internal/corefont/metrics"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/sanitize"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TTFLight represents a TrueType font w/o font file.
@@ -272,7 +272,7 @@ func (fd TTFLight) unicodeRangeBits(id string) []int {
 	// Returns a slice of relevant unicodeRangeBits.
 	//
 	// This mapping is incomplete as we only cover unicode blocks of the most popular scripts.
-	// Please go to https://github.com/pdfcpu/pdfcpu/issues/new/choose for an extension request.
+	// Please go to https://github.com/dobbo-ca/pdf-go/issues/new/choose for an extension request.
 	//
 	//  0 Basic Latin						0000-007F
 	//  1 Latin-1 Supplement				0080-00FF

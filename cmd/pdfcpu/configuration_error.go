@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
+	"github.com/dobbo-ca/pdf-go/pkg/api"
 )
 
 type configurationSchemaCommandError struct {

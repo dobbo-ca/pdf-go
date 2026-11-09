@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // TestEncryptDictRejectsMissingReferencedObject verifies undefined references return an explicit cause.

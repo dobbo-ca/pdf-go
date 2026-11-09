@@ -22,8 +22,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/color"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/color"
+	"github.com/dobbo-ca/pdf-go/pkg/pdfcpu/types"
 )
 
 // Cut contains page subdivision and output settings for cut and poster operations.
