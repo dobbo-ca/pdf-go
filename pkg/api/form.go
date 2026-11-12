@@ -569,6 +569,19 @@ func validateOptionValues(f form.Form) error {
 	return nil
 }
 
+// dropFormRights removes /Perms and /XFA whether or not the form is signed.
+// A fill rewrites the whole file, so a UR3 usage-rights signature can no longer
+// verify, and an XFA stream would still hold the old values and override the
+// filled AcroForm in XFA-aware viewers. RemoveSignature does this only when
+// SigFlags is set.
+func dropFormRights(ctx *model.Context) {
+	delete(ctx.RootDict, "Perms")
+	if ctx.Form != nil {
+		delete(ctx.Form, "XFA")
+		ctx.RootDict["AcroForm"] = ctx.Form
+	}
+}
+
 func fillPostProc(c context.Context, ctx *model.Context, pp []*model.Page) error {
 	if err := contextutil.Check(c); err != nil {
 		return err
@@ -640,6 +653,7 @@ func FillForm(c context.Context, rs io.ReadSeeker, rd io.Reader, w io.Writer, co
 
 	// TODO not necessarily so
 	ctx.RemoveSignature()
+	dropFormRights(ctx)
 
 	formGroup, err := formGroupFromReader(c, rd)
 	if err != nil {
