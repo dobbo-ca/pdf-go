@@ -3344,6 +3344,12 @@ func ensureIndirectStreamLength(c context.Context, ctx *model.Context, sd *types
 
 // loadEncodedStreamContent loads the encoded stream content into sd.
 func loadEncodedStreamContent(c context.Context, ctx *model.Context, sd *types.StreamDict, fixLength bool) error {
+	return loadEncodedStreamContentCharged(c, ctx, sd, fixLength, true)
+}
+
+// loadEncodedStreamContentCharged is loadEncodedStreamContent; charge is false when the declared length was
+// already charged (see deferImageStream).
+func loadEncodedStreamContentCharged(c context.Context, ctx *model.Context, sd *types.StreamDict, fixLength, charge bool) error {
 	if sd.Raw != nil {
 		return nil
 	}
@@ -3371,7 +3377,7 @@ func loadEncodedStreamContent(c context.Context, ctx *model.Context, sd *types.S
 
 	// Stream data counts toward the read budget: before allocating for a known length, after reading otherwise.
 	available := max(ctx.Read.FileSize-sd.StreamOffset, 0)
-	if l1 > 0 {
+	if l1 > 0 && charge {
 		if err := chargeObjectRead(c, ctx, min(int64(l1), available)); err != nil {
 			return err
 		}
@@ -3385,7 +3391,7 @@ func loadEncodedStreamContent(c context.Context, ctx *model.Context, sd *types.S
 		return fmt.Errorf("read stream content: %w", err)
 	}
 
-	if l1 <= 0 {
+	if l1 <= 0 && charge {
 		if err := chargeObjectRead(c, ctx, int64(len(sd.Raw))); err != nil {
 			return err
 		}
@@ -3889,6 +3895,13 @@ func handleLinearizationParmDict(ctx *model.Context, obj types.Object, objNr int
 }
 
 func loadStreamDict(c context.Context, ctx *model.Context, sd *types.StreamDict, objNr, genNr int, fixLength bool) error {
+	if deferred, err := deferImageStream(c, ctx, sd, fixLength); err != nil {
+		return fmt.Errorf("stream obj#%d: defer image content: %w", objNr, err)
+	} else if deferred {
+		ctx.Read.BinaryTotalSize += *sd.StreamLength
+		return nil
+	}
+
 	// Load encoded stream content for stream dicts into xRefTable entry.
 	if err := loadEncodedStreamContent(c, ctx, sd, fixLength); err != nil {
 		return fmt.Errorf("stream obj#%d: load encoded content: %w", objNr, err)
