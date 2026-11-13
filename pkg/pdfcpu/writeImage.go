@@ -301,6 +301,10 @@ func softMask(xRefTable *model.XRefTable, d *types.StreamDict, w, h, objNr int) 
 		return nil, err
 	}
 
+	if sd.Raw == nil { // left unloaded by a lazy read: decode a copy so the table does not keep the bytes
+		cp := *sd
+		sd = &cp
+	}
 	sm, err := streamBytes(xRefTable, sd, fmt.Sprintf("image obj#%d soft mask", objNr))
 	if err != nil {
 		return nil, err

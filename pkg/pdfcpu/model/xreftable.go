@@ -126,6 +126,8 @@ type PgAnnots map[AnnotationType]Annot
 
 // XRefTable represents a PDF cross reference table plus stats for a PDF file.
 type XRefTable struct {
+	// LoadRaw, set by a lazy Read (pdfcpu.WithLazyImageStreams), loads the encoded bytes of a stream it left unread.
+	LoadRaw func(*types.StreamDict) error
 	Table               map[int]*XRefTableEntry
 	Size                *int               // from trailer dict.
 	MaxObjNr            int                // after reading in all objects from xRef table.
@@ -2282,6 +2284,11 @@ func (xRefTable *XRefTable) DecodeObjectStream(sd *types.StreamDict) error {
 
 // DecodeImageStream is DecodeStream for images. Without MaxTotalDecodeBytes images have no cumulative cap.
 func (xRefTable *XRefTable) DecodeImageStream(sd *types.StreamDict) error {
+	if sd.Raw == nil && sd.Content == nil && xRefTable != nil && xRefTable.LoadRaw != nil {
+		if err := xRefTable.LoadRaw(sd); err != nil {
+			return err
+		}
+	}
 	if xRefTable == nil || xRefTable.Conf == nil || xRefTable.Conf.Limits.MaxTotalDecodeBytes <= 0 {
 		var conf *Configuration
 		if xRefTable != nil {

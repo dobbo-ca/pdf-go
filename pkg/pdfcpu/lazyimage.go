@@ -38,6 +38,7 @@ func deferImageStream(c context.Context, ctx *model.Context, sd *types.StreamDic
 	if sd.StreamLength == nil || *sd.StreamLength <= 0 { // unknown length: only a read can tell
 		return false, nil
 	}
+	ctx.XRefTable.LoadRaw = func(sd *types.StreamDict) error { return LoadStreamRaw(context.Background(), ctx, sd) }
 	n := min(*sd.StreamLength, max(ctx.Read.FileSize-sd.StreamOffset, 0))
 	if err := chargeObjectRead(c, ctx, n); err != nil {
 		return false, err
