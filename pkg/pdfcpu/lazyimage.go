@@ -28,8 +28,9 @@ func deferImageStream(c context.Context, ctx *model.Context, sd *types.StreamDic
 	if lazy, _ := c.Value(lazyImageKey{}).(bool); !lazy || fixLength || ctx.EncKey != nil {
 		return false, nil
 	}
-	image, err := isImageStreamDict(ctx, sd)
-	if err != nil || !image {
+	// /Type is optional for an image XObject, so /Subtype /Image alone qualifies.
+	subtype, _, err := ctx.DereferenceNameEntry(sd.Dict, "Subtype")
+	if err != nil || subtype == nil || subtype.Value() != "Image" {
 		return false, err
 	}
 	if err := ensureIndirectStreamLength(c, ctx, sd, false); err != nil {

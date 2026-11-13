@@ -63,8 +63,14 @@ func TestMain(m *testing.M) {
 	resDir = filepath.Join(inDir, "resources")
 	samplesDir = filepath.Join("..", "..", "samples")
 
-	var err error
-	conf, err = api.LoadConfiguration(api.ConfigurationOptions{Mode: api.ConfigurationModeAuto})
+	// A private config root: test binaries of different packages run in parallel and would otherwise race
+	// installing fonts into the shared user config dir.
+	confRoot, err := os.MkdirTemp("", "pdfcpu_test_conf")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "create test configuration root: %v\n", err)
+		os.Exit(1)
+	}
+	conf, err = api.LoadConfiguration(api.ConfigurationOptions{Root: confRoot, Mode: api.ConfigurationModeAuto})
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "load test configuration: %v\\n", err)
 		os.Exit(1)
@@ -92,6 +98,8 @@ func TestMain(m *testing.M) {
 	//fmt.Printf("outDir = %s\n", outDir)
 
 	exitCode := m.Run()
+
+	os.RemoveAll(confRoot)
 
 	if err = os.RemoveAll(outDir); err != nil {
 		fmt.Printf("%v", err)

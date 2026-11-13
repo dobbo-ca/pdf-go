@@ -15,6 +15,11 @@ import (
 
 // lazyImagePDF builds pages one-image pages; image i is n bytes of i-dependent noise.
 func lazyImagePDF(pages, n int) ([]byte, [][]byte) {
+	return lazyImagePDFType(pages, n, "/Type/XObject")
+}
+
+// lazyImagePDFType is lazyImagePDF with the image dict's /Type entry set to typ (empty: no /Type).
+func lazyImagePDFType(pages, n int, typ string) ([]byte, [][]byte) {
 	var b bytes.Buffer
 	var offs []int
 	obj := func(body string) {
@@ -40,7 +45,7 @@ func lazyImagePDF(pages, n int) ([]byte, [][]byte) {
 		}
 		imgs[i] = img
 		offs = append(offs, b.Len())
-		fmt.Fprintf(&b, "%d 0 obj\n<</Type/XObject/Subtype/Image/Width 1/Height 1/ColorSpace/DeviceGray/BitsPerComponent 8/Filter/DCTDecode/Length %d>>\nstream\n", len(offs), n)
+		fmt.Fprintf(&b, "%d 0 obj\n<<%s/Subtype/Image/Width 1/Height 1/ColorSpace/DeviceGray/BitsPerComponent 8/Filter/DCTDecode/Length %d>>\nstream\n", len(offs), typ, n)
 		b.Write(img)
 		b.WriteString("\nendstream\nendobj\n")
 	}
@@ -102,6 +107,24 @@ func TestLazyImageStreams(t *testing.T) {
 	eager := readLazyImagePDF(t, pdf, false)
 	if sd := eager.XRefTable.Table[5].Object.(types.StreamDict); !bytes.Equal(sd.Raw, imgs[0]) {
 		t.Fatal("eager read lost the image bytes")
+	}
+}
+
+// /Type is optional on an image XObject: a stream with only /Subtype /Image still loads lazily.
+func TestLazyImageStreamsNoType(t *testing.T) {
+	pdf, imgs := lazyImagePDFType(2, 4<<10, "")
+	ctx := readLazyImagePDF(t, pdf, true)
+	for i := range imgs {
+		sd := ctx.XRefTable.Table[5+i*3].Object.(types.StreamDict)
+		if sd.Raw != nil {
+			t.Fatalf("image %d without /Type: Raw loaded by lazy read", i)
+		}
+		if err := LoadStreamRaw(context.Background(), ctx, &sd); err != nil {
+			t.Fatal(err)
+		}
+		if !bytes.Equal(sd.Raw, imgs[i]) {
+			t.Fatalf("image %d: lazy bytes differ", i)
+		}
 	}
 }
 
