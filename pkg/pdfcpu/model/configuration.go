@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Modified by dobbo-ca, 2026: added per-parse resource limits
+// (MaxTotalDecodeBytes, MaxParsedBytes, MaxObjectStreamTotalCount).
+
 package model
 
 import (
